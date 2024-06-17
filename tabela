@@ -1,0 +1,46 @@
+use Seba
+
+CREATE FUNCTION trójkąt
+(@bokA decimal(10,1),
+ @bokC decimal(10,1))
+ returns decimal(10,1) as
+ begin return
+ 0.5 * @bokA * @bokC
+ end;
+
+CREATE FUNCTION kwadrat
+(@bok decimal(10,1))
+returns decimal(10,1) as
+begin return
+@bok * @bok
+end;
+
+CREATE FUNCTION	koło
+(@promień decimal(10,1))
+returns decimal(10,1) as
+begin
+return
+(@promień * @promień) *3.14 
+end;
+
+CREATE FUNCTION prostokąt
+(@bokA decimal(10,1),
+ @bokB decimal(10,1))
+returns decimal(10,1) as
+begin return
+@bokA * @bokB
+end;
+
+
+ CREATE VIEW Pola_figur as
+
+ select Figura, A, B, C, promień, Case When figura = 'koło' then dbo.koło(promień)
+                                       When figura = 'Kwadrat' then dbo.kwadrat(A)
+									                     When figura = 'prostokąt' then dbo.prostokąt(A,B)
+									                     When figura = 'trójkąt prostokątny' then dbo.trójkąt(A,C) end as Pole
+ from pola;
+
+-- Kwadrat -> A
+-- Prostokąt -> A,B
+-- Trójkąt prostokątny -> A,C
+-- Koło -> promień
