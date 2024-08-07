@@ -36,8 +36,8 @@ end;
 
  select Figura, A, B, C, promień, Case When figura = 'koło' then dbo.koło(promień)
                                        When figura = 'Kwadrat' then dbo.kwadrat(A)
-									                     When figura = 'prostokąt' then dbo.prostokąt(A,B)
-									                     When figura = 'trójkąt prostokątny' then dbo.trójkąt(A,C) end as Pole
+	                               When figura = 'prostokąt' then dbo.prostokąt(A,B)
+				       When figura = 'trójkąt prostokątny' then dbo.trójkąt(A,C) end as Pole
  from pola;
 
 -- Kwadrat -> A
